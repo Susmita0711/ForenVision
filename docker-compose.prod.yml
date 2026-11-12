@@ -1,0 +1,92 @@
+# ==============================================================================
+# ForenVision AI Production Docker Compose Stack
+# Orchestrates Gunicorn Backend API, Nginx Reverse Proxy, and Vault Storage
+# ==============================================================================
+
+version: '3.8'
+
+services:
+  # ----------------------------------------------------------------------------
+  # Backend WSGI API Service (Python + Gunicorn)
+  # ----------------------------------------------------------------------------
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: forenvision-api:latest
+    container_name: forenvision_api
+    restart: always
+    env_file:
+      - ./backend/.env.production
+    environment:
+      - FLASK_ENV=production
+      - PORT=5001
+      - UPLOAD_FOLDER=/var/forenvision/evidence_vault
+      - LOG_DIR=/var/log/forenvision
+    volumes:
+      - evidence_vault:/var/forenvision/evidence_vault
+      - app_logs:/var/log/forenvision
+      - frontend_dist:/app/frontend/dist:ro
+    deploy:
+      resources:
+        limits:
+          cpus: '4.0'
+          memory: 4096M
+        reservations:
+          cpus: '1.0'
+          memory: 1024M
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - forenvision_internal
+
+  # ----------------------------------------------------------------------------
+  # Reverse Proxy & HTTPS Edge (Nginx)
+  # ----------------------------------------------------------------------------
+  web:
+    image: nginx:1.25-alpine
+    container_name: forenvision_web
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/forenvision.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/proxy_params_forenvision:/etc/nginx/proxy_params_forenvision:ro
+      - frontend_dist:/var/www/forenvision/frontend/dist:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+      - /var/www/certbot:/var/www/certbot:ro
+    depends_on:
+      api:
+        condition: service_healthy
+    networks:
+      - forenvision_internal
+      - forenvision_public
+
+# ------------------------------------------------------------------------------
+# Persistent Volume Declarations
+# ------------------------------------------------------------------------------
+volumes:
+  evidence_vault:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /var/forenvision/evidence_vault
+  app_logs:
+    driver: local
+  frontend_dist:
+    driver: local
+
+# ------------------------------------------------------------------------------
+# Network Isolation
+# ------------------------------------------------------------------------------
+networks:
+  forenvision_internal:
+    internal: true
+  forenvision_public:
+    driver: bridge

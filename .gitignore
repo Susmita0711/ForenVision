@@ -1,0 +1,61 @@
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Node / Frontend
+node_modules/
+dist/
+build/
+.npm/
+*.tsbuildinfo
+
+# Python / Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+pytest_cache/
+.pytest_cache/
+
+# Environment Variables & Secrets (never commit credentials)
+.env
+.env.*
+!.env.example
+!.env.production.example
+
+
+# Evidence Uploads & Scratch
+backend/uploads/*
+!backend/uploads/.gitkeep
+backend/reports/*
+!backend/reports/.gitkeep
+
+# Temporary lock files & Ultralytics runs
+~$*
+runs/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo

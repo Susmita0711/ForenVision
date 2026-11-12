@@ -1,0 +1,9 @@
+# ForenVision AI — Augmented Training Dataset (Strict Val/Test Isolation)
+path: /Users/abir/Coding/Forenvision/datasets/prepared/gun_detection_aug
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: person
+  1: gun

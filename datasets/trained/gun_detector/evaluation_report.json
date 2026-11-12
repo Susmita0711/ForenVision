@@ -1,0 +1,98 @@
+{
+  "modelId": "forensic-gun-yolov8",
+  "modelName": "ForenVision Gun & Person Detector (YOLOv8n)",
+  "version": "1.0.0-yolov8n",
+  "architecture": "YOLOv8n (CSPDarknet Backbone + PAN-FPN + Decoupled Anchor-Free Head)",
+  "source": "Fine-tuned on ForenVision People with Guns Dataset (datasets/archive (1), CVAT XML)",
+  "license": "AGPL-3.0 (Ultralytics YOLOv8 Architecture) / Custom Fine-Tuned Weights",
+  "classes": [
+    "person",
+    "gun"
+  ],
+  "inputResolution": "640x640 (letterbox RGB)",
+  "onnxFile": "forensic_gun_yolov8n.onnx",
+  "onnxSha256": "f2d1a17db1086a028867546dfe6dfdad87d42538629587937d0aabe629a607cc",
+  "modelSizeMB": 11.67,
+  "trainingDataset": {
+    "sourceDataset": "datasets/archive (1)",
+    "preparedDataset": "datasets/prepared/gun_detection",
+    "sourceTotalImages": 11,
+    "sourceSplit": {
+      "train": 8,
+      "val": 2,
+      "test": 1
+    },
+    "augmentedTrainImages": 48,
+    "seed": 42,
+    "epochsMax": 100,
+    "imgsz": 640,
+    "trainingDevice": "mps",
+    "selectedCheckpoint": "best.pt"
+  },
+  "evaluationMetrics": {
+    "validation": {
+      "precision": 0.6941,
+      "recall": 0.9793,
+      "mAP50": 0.9117,
+      "mAP50_95": 0.3643,
+      "perClass": {
+        "person": {
+          "ap50": 0.995,
+          "ap50_95": 0.3971
+        },
+        "gun": {
+          "ap50": 0.8283,
+          "ap50_95": 0.3315
+        }
+      }
+    },
+    "heldOutTest": {
+      "precision": 0.8196,
+      "recall": 1.0,
+      "mAP50": 0.995,
+      "mAP50_95": 0.597,
+      "perClass": {
+        "person": {
+          "ap50": 0.995,
+          "ap50_95": 0.597
+        },
+        "gun": {
+          "ap50": 0.995,
+          "ap50_95": 0.597
+        }
+      }
+    },
+    "openCvDnnSmokeTest": {
+      "outputShape": [
+        1,
+        6,
+        8400
+      ],
+      "testImage": "009_9.jpeg",
+      "detectionsCount": 2,
+      "detections": [
+        {
+          "class": "person",
+          "confidence": 0.7048,
+          "box": [
+            803,
+            50,
+            710,
+            1287
+          ]
+        },
+        {
+          "class": "person",
+          "confidence": 0.6,
+          "box": [
+            1720,
+            41,
+            197,
+            1296
+          ]
+        }
+      ]
+    }
+  },
+  "trainedAt": "2026-11-12T11:50:00.890570+00:00"
+}

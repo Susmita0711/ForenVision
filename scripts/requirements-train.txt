@@ -1,0 +1,9 @@
+# Training pipeline dependencies (not required at Flask/Gunicorn inference runtime)
+torch>=2.2.0
+torchvision>=0.17.0
+ultralytics>=8.1.29
+onnx>=1.16.0
+opencv-python>=4.9.0
+pillow>=10.4.0
+numpy<2.0
+

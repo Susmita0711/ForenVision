@@ -1,0 +1,29 @@
+{
+  "dataset_name": "Weapons - Gun Detection & Segmentation",
+  "raw_source_dir": "/Users/abir/Coding/Forenvision/datasets/archive (1)",
+  "prepared_output_dir": "/Users/abir/Coding/Forenvision/datasets/prepared/gun_detection",
+  "random_seed": 42,
+  "total_images": 11,
+  "split_distribution": {
+    "train": 8,
+    "val": 2,
+    "test": 1
+  },
+  "class_distribution_by_split": {
+    "train": {
+      "person": 12,
+      "gun": 15
+    },
+    "val": {
+      "person": 2,
+      "gun": 2
+    },
+    "test": {
+      "person": 1,
+      "gun": 1
+    }
+  },
+  "total_annotations": 33,
+  "total_warnings": 0,
+  "warnings": []
+}
