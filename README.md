@@ -101,9 +101,7 @@ brew services start mongodb-community
 mongod --config /opt/homebrew/etc/mongod.conf
 ```
 
-#### Step 2: Set Up Backend & Seed Database
-```bash
-cd /Users/abir/Coding/Forenvision/backend
+#### Step 2: Set Up Backend & Seed 
 
 # Create virtualenv and install dependencies
 python3 -m venv venv
@@ -111,17 +109,17 @@ python3 -m venv venv
 ./venv/bin/pip install -r requirements.txt
 
 # Run idempotent database seed (creates baseline users, 9 real cases, evidence, custody, AI results, and court reports)
-cd /Users/abir/Coding/Forenvision
+cd /Users/Coding/Forenvision
 ./backend/venv/bin/python scripts/seed_demo_data.py
 
 # Start Flask backend on port 5001
-cd /Users/abir/Coding/Forenvision/backend
+cd /Users/Coding/Forenvision/backend
 ./venv/bin/python app.py
 ```
 
 #### Step 3: Set Up & Start Frontend UI
 ```bash
-cd /Users/abir/Coding/Forenvision/frontend
+cd /Users/Coding/Forenvision/frontend
 
 # Install dependencies
 npm install
@@ -375,8 +373,8 @@ This automatically parses CVAT XML annotations, prepares train/val/test splits, 
 
 ### Re-Train CUHK Sketch Matcher
 ```bash
-/Users/abir/anaconda3/bin/python3 scripts/train_sketch_matcher.py \
-  --data-dir "/Users/abir/Coding/Forenvision/datasets/archive"
+/Users/anaconda3/bin/python3 scripts/train_sketch_matcher.py \
+  --data-dir "/Users/Coding/Forenvision/datasets/archive"
 ```
 This extracts YuNet+SFace facial embeddings for all 188 photo-sketch pairs, trains a 2-layer residual projection head using cosine-margin triplet loss, evaluates Rank-1/Rank-5/MRR/AUC on untouched validation and held-out test splits, and exports `backend/models/cuhk_sketch_matcher.{onnx,npz}`.
 
@@ -388,11 +386,11 @@ The project includes an end-to-end automated test suite covering RBAC, security 
 
 ```bash
 # 1. Run full backend pytest suite (135 tests)
-cd /Users/abir/Coding/Forenvision
+cd /Users/Coding/Forenvision
 ./backend/venv/bin/pytest backend/tests/ -v
 
 # 2. Run frontend TypeScript check, lint, and production build
-cd /Users/abir/Coding/Forenvision/frontend
+cd /Users/Coding/Forenvision/frontend
 npm run lint
 npm run build
 ```
