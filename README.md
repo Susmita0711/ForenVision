@@ -1,4 +1,4 @@
-# ForenVision AI — Digital Forensics & Evidence Intelligence Platform
+# ForenVision — Digital Forensics & Evidence Intelligence Platform
 
 [![Python](https://img.shields.io/badge/Python-3.12-blue.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
