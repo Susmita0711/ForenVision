@@ -11,7 +11,7 @@
 [![Pytest](https://img.shields.io/badge/Pytest-135%2F135_Passed-success.svg?logo=pytest&logoColor=white)](https://pytest.org/)
 [![Standards](https://img.shields.io/badge/Standards-ISO%2FIEC_27037_%7C_ACE--V-orange.svg)]()
 
-**ForenVision AI** is an enterprise-grade digital forensics and court-exhibit intelligence platform built for forensic examiners, cyber-investigators, and law-enforcement laboratories. It integrates full case lifecycle management, SHA-256 cryptographic vault sealing, tamper-evident Chain of Custody tracking (ISO/IEC 27037), five specialized forensic and AI analysis workbenches, automated ReportLab court PDF generation, live accuracy telemetry, and strict Role-Based Access Control (RBAC).
+**ForenVision** is an enterprise-grade digital forensics and court-exhibit intelligence platform built for forensic examiners, cyber-investigators, and law-enforcement laboratories. It integrates full case lifecycle management, SHA-256 cryptographic vault sealing, tamper-evident Chain of Custody tracking (ISO/IEC 27037), five specialized forensic and AI analysis workbenches, automated ReportLab court PDF generation, live accuracy telemetry, and strict Role-Based Access Control (RBAC).
 
 ---
 
